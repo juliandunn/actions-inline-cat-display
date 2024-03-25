@@ -11,4 +11,4 @@ jobs:
       run: wget -O viu https://github.com/atanunq/viu/releases/download/v1.5.0/viu-x86_64-unknown-linux-musl && chmod +x viu
 
     - name: Decode secret
-      run: echo -n {{ secrets.KITTY }} | base64 --decode | viu
+      run: echo -n ${{ secrets.KITTY }} | base64 --decode | ./viu
