@@ -1,0 +1,14 @@
+name: Show an inline cat
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get viu
+      run: wget -O /usr/bin/viu https://github.com/atanunq/viu/releases/download/v1.5.0/viu-x86_64-unknown-linux-musl && chmod +x /usr/bin/viu
+
+    - name: Decode secret
+      run: echo -n {{ secrets.KITTY }} | base64 --decode | /usr/bin/viu
